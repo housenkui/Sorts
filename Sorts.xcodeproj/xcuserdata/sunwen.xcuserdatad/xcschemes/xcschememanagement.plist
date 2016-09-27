@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>selectSort.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>F5250B7E1D9AA11E002E5C95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F53C2E9B1D9666310007BF71</key>
 		<dict>
 			<key>primary</key>
