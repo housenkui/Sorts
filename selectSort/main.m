@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+//选择排序
+void selectSort(long a[],long n);
+
 int main(int argc, const char * argv[]) {
+    
+    
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        
+        
+        
     }
     return 0;
 }

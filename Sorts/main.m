@@ -22,8 +22,6 @@ void Shell(long a[],long n);
 
 void printArr(long a[], long n);
 
-long selectMinKey(long a[],long n,long i);//获得数组元素最小的下标
-
 void selectSort(long a[],long n);
 
 static NSUInteger count1 = 0;
@@ -39,46 +37,30 @@ int main(int argc, const char * argv[]) {
         
         long a[N] = {};
         
-//        NSMutableString *mutableString = [NSMutableString string];
+        NSMutableString *mutableString = [NSMutableString string];
 
         for (long i  = N; i >= 0; i--) {
             
             a[i] = arc4random()%N;
             
-//            if (i == N) {
-//                
-//                [mutableString appendFormat:@"%ld",a[i]];
-//
-//            }
-//            else
-//            {
-//                [mutableString appendFormat:@",%ld",a[i]];
-//
-//            }
+            if (i == 0) {
+                
+                [mutableString appendFormat:@"%ld",a[i]];
+
+            }
+            else
+            {
+                [mutableString appendFormat:@",%ld",a[i]];//将生成的(0~N-1)的随机数存入可变字符串中
+
+            }
             
             
         }//生成N个随机数的 大型数组
-//        NSLog(@"排序前:\n");
-//        printArr(a,N);
-//        
-        NSDate *dateBefore = [NSDate date];
         
-        NSLog(@"dateBefore = %@",dateBefore);
-        
-        
+        //进行Shell排序
         Shell(a, N);
         
-//        NSLog(@"排序后:\n");
-//
-//        printArr(a,N);
-        NSDate *after= [NSDate date];
-        
-        NSLog(@"after = %@",after);
-
-        
-        NSTimeInterval time  =[[NSDate date] timeIntervalSinceDate:dateBefore];
-        
-        NSLog(@"%d个元素交换次数%lu,耗时%lf毫秒",N,count1+count2,time);
+        NSLog(@"%d个元素交换次数%lu",N,count1+count2,);
         
         double whelo = (double)count1+count2;
      
@@ -91,58 +73,26 @@ int main(int argc, const char * argv[]) {
         
       
         //NSDesktopDirectory 写入到桌面
-//        NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//        
-//        NSString *  path  = [documentPath stringByAppendingPathComponent:@"数据"];
-//        
-//        NSFileManager *fileManager = [NSFileManager defaultManager];
-//        
-//        if (![fileManager fileExistsAtPath:path]) {
-//            //  创建文件
-//
-//            [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:@{} error:nil];
-//        }
-//        NSLog(@"documentPath  =%@",documentPath);
-//        
-//        [mutableString writeToFile:[NSString stringWithFormat:@"%@/%d.txt",path,N] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-
-
+        NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
-//        NSString *stringRead = [NSString stringWithContentsOfFile:[NSString stringWithFormat:@"%@/100.txt",path] encoding:NSUTF8StringEncoding error:nil];
-//        
-//        NSLog(@"stringRead =%@",stringRead);
-//        
-//        NSArray * arr = [stringRead componentsSeparatedByString:@","];
-//        
-//        NSLog(@"arr  =%@",arr);
-//        
-//        
-//        int C_Array[100] = {};
-//        
-//        NSLog(@"数组占用%ld",sizeof(C_Array));
-//        
-//        for (NSString *str in arr) {
-//
-//            NSString *str = [NSString stringWithFormat:@"%@",obj];
-//
-//          NSLog(@"str 属于%@类", NSStringFromClass([str class]));
-            
-//            NSLog(@"arr 属于%@类", NSStringFromClass([arr class]));
-//
-//            NSUInteger i = 0;
-//            
-//            i = [arr indexOfObject:str];
-//
-//            int value =[str intValue];
-//            
-//            C_Array[i] = value;
-//            
-//        }
-//        
-//    int length = sizeof(C_Array)/sizeof(C_Array[0]);
-//
-//    printArr(C_Array,length); //打印 C 语言数组
+        NSString *  path  = [documentPath stringByAppendingPathComponent:@"数据"];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if (![fileManager fileExistsAtPath:path]) {
+            //  创建文件
+
+            [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:@{} error:nil];
+        }
+        NSLog(@"documentPath  =%@",documentPath);
+        
+        [mutableString writeToFile:[NSString stringWithFormat:@"%@/%d.txt",path,N] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        //将可变字符串写入硬盘
+    
+        
+        NSString *stringRead = [NSString stringWithContentsOfFile:[NSString stringWithFormat:@"%@/%d.txt",path,N] encoding:NSUTF8StringEncoding error:nil];
+        //从硬盘读取字符串
         
     
         
