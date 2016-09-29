@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TestTool.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>selectSort.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>F5250B7E1D9AA11E002E5C95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5250B891D9BA42E002E5C95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
