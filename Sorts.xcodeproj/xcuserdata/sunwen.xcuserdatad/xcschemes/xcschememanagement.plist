@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>TestTool1.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>selectSort.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>F53C2E9B1D9666310007BF71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5FBEC901DD9C31900F51F83</key>
 		<dict>
 			<key>primary</key>
 			<true/>

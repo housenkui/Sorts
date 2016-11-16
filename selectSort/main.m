@@ -11,7 +11,7 @@
 static NSUInteger count1 = 0;
 
 
-#define N  33
+#define N  10
 //选择排序
 void selectSort(long a[],long n);
 
@@ -22,6 +22,8 @@ void printArr(long a[], long n);
 void Testfun(long a[],long n);
 
 void testFun(long a[],long n);
+void testFun1(long a[],long n);
+
 /*
  二路选择排序的时间复杂度在n^1.2 左右 ,样本数量2*10^5
  
@@ -45,14 +47,14 @@ int main(int argc, const char * argv[]) {
         printArr(a,N);
 
         //进行选择排序
-        testFun(a, N);
+        testFun1(a, N);
 
         NSLog(@"排序后:");
 
         printArr(a,N);
 
         
-//        selectSort(a, N);
+        selectSort(a, N);
         
         
         NSLog(@"二元选择排序%d个随机元素交换次数%lu",N,count1);
@@ -87,7 +89,7 @@ void selectSort(long a[],long n){
             
             if (a[j] <  a[i]) {
                 
-//                NSLog(@"a[%ld] = %ld,a[%ld]=%ld",i,a[i],j,a[j]);
+                NSLog(@"a[%ld] = %ld,a[%ld]=%ld",i,a[i],j,a[j]);
 
                 temp =a[i];
                 
@@ -295,9 +297,62 @@ void testFun(long a[],long n){
 
 
 
+/*
+ 二元选择排序，每一趟排序选出最大值和最小值，只需要进行n/2躺的排序。
+ */
+void testFun1(long a[],long n){
+    
+    long i,j,max,min,temp;
+    
+    for (i = 0; i < n/2; i ++) {
+        
+        max =i;
+        
+        min =i;
+        
+        for (j=i+1; j< n-i; j++) {
+            
+            if (a[j]>a[max]){
+                
+                max = j;//每趟排序找出最大值
+                continue;
+            }
+            
+            if (a[j]< a[min]) {
+                
+                min = j;//每趟排序找出最小值
+            }
 
+        }
+        
+        temp = a[i];
+        
+        a[i] =a[min];//找到最小的数据交换
+        
+        a[min] = temp;
+        
+        if (max ==i) {
+            //此时 a[i]已经被a[min]替换了
+            temp = a[n-i-1];
 
-
+            a[n-i-1] = a[min];
+            
+            a[min] = temp;
+        }
+        else
+        {
+            temp = a[n-i-1];
+            
+            a[n-i-1] = a[max];//找到最大的数据交换
+            
+            a[max] = temp;
+        }
+        
+        
+        
+    }
+    
+}
 
 
 
