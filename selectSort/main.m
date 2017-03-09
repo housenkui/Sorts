@@ -24,10 +24,7 @@ void Testfun(long a[],long n);
 void testFun(long a[],long n);
 void testFun1(long a[],long n);
 
-/*
- 二路选择排序的时间复杂度在n^1.2 左右 ,样本数量2*10^5
- 
- */
+
 
 int main(int argc, const char * argv[]) {
     
@@ -52,7 +49,6 @@ int main(int argc, const char * argv[]) {
         NSLog(@"排序后:");
 
         printArr(a,N);
-
         
         selectSort(a, N);
         
@@ -76,7 +72,9 @@ int main(int argc, const char * argv[]) {
  
 然后 让第2个记录和其余 N-2个记录进行比较，选择其中最小的数值与第2个记录交换位置
  
-然后 让第3个记录和其余 N-3个记录进行比较，选择其中最小的数值与第3个记录交换位置，一直到让第N-1个记录和其余 1个记录进行比较，选择其中最小的数值与第N-1个记录交换位置
+然后 让第3个记录和其余 N-3个记录进行比较，选择其中最小的数值与第3个记录交换位置。
+ 
+ 一直到让第N-1个记录和其余 1个记录进行比较，选择其中最小的数值与第N-1个记录交换位置
  */
 void selectSort(long a[],long n){
     
@@ -85,25 +83,18 @@ void selectSort(long a[],long n){
     for ( long i = 0; i< n; i++) {
         
         
-        for (long j=i+1; j < n; j++) {
+        for (long j=i+1; j < n; j++) {//当i= 0是，a[0]将会与a[1]~a[n-1]进行比较
             
             if (a[j] <  a[i]) {
                 
-                NSLog(@"a[%ld] = %ld,a[%ld]=%ld",i,a[i],j,a[j]);
-
                 temp =a[i];
                 
                 a[i] = a[j];
                 
-                
                 a[j] = temp;
-                
-                count1++;
                 
             }
         }
-        
-        
     }
     
 }
@@ -121,7 +112,7 @@ void selectSortTwoRoad(long a[],long n){
     
      long j = 0;
     
-    for ( i = 0; i < n/2; i++) {
+     for ( i = 0; i < n/2; i++) {
         
         tmp_Min = i;
         tmp_Max = i;
@@ -132,21 +123,15 @@ void selectSortTwoRoad(long a[],long n){
                 
                 tmp_Max = j;//记下较大的数字
                 
-                //count1++;
-                
                 continue;
             }
 
-            
             //j始终比i大1
             //右边的数 小于左边的数
             
             if (a[j] < a [tmp_Min]) {
                 
                 tmp_Min = j;
-                
-//                count1++;
-                
             }
            
         }
@@ -179,7 +164,7 @@ void selectSortTwoRoad(long a[],long n){
     
 }
 
-void Testfun(long a[],long n){
+void selectSortMinMax(long a[],long n){
     
     long minpos,maxpos,i,j,tmp;
     for (i=0 ; i < n/2; i++)
@@ -190,14 +175,13 @@ void Testfun(long a[],long n){
         {
             if (a[j] > a[maxpos])
             {
-                maxpos = j ;        count1++;
+                maxpos = j ;
 
                 continue ;
             }
             if (a[j]< a[minpos])
             {
-                minpos = j ;        count1++;
-
+                minpos = j ;
             }
         }
         
@@ -206,8 +190,6 @@ void Testfun(long a[],long n){
         a[i] = a[minpos];//a[i]的值已经改变了，已经和最小的值交换了位置，此时a[minpos]数值更大
         
         a[minpos] = tmp;
-        
-        count1++;
         
         //当i==maxpos的时候，a[i]已经改变，已经改变，已经改变，已经改变，而maxpos交换的是改变后的值，所以还要加一个if条件
         if(maxpos==i)
@@ -223,7 +205,6 @@ void Testfun(long a[],long n){
             a[n-i-1] = a[maxpos];
             a[maxpos] = tmp;
         }
-        count1++;
     }
     
 }

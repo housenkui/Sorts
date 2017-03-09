@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 /*插入排序：基本思想，将一个记录插入到一个有序表中，从而得到一个记录数增加1的有序表，先将第1个记录看成有序表，然后从第2个记录逐个插入，直到整个序列有序为止。
- 
  */
+
 void InsertSort(long a[],long n);
 
 /*
@@ -31,7 +31,7 @@ void ShellTest(long a[],long n);
 
 static NSUInteger count1 = 0;
 
-#define N  10000000
+#define N  10
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
         
         long a[N] = {};
         
-//        NSMutableString *mutableString = [NSMutableString string];
+        NSMutableString *mutableString = [NSMutableString string];
 
         for (long i  = 0; i < N; i++) {
             
@@ -123,8 +123,7 @@ void printArr(long a[], long n){
 }
 //升序  缩小增量排序基本思想:
 /*
- 选择一个增量因子dk(dk=n/2,n是序列数量),将序列分割成若干个小序列，小序列的元素下标相差dk,对小序列进行直接插入排序，再将原有序列按照增量因子dk=dk/2;将序列分割成若干个小序列，小序列的元素下标相差dk,对小序列进行直接插入排序，直到dk=1；然后对“基本有序”原有序列，进行直接插入排序。
- 
+ 选择一个增量因子dk(dk=n/2,n是序列数量),将序列分割成若干个小序列，小序列的元素下标相差dk,对小序列进行直接插入排序，再将原有序列按照增量因子dk=dk/2;将序列分割成若干个小序列，小序列的元素下标相差dk,对小序列进行直接插入排序，直到dk=1；然后对“基本有序”原有序列，再进行直接插入排序。
  
  
     9   8  7  6  5  4  1  2  6
@@ -140,13 +139,9 @@ void ShellInsertSort(long a[],long n,long dk){
             long x = a[i];
             a[i] = a[i-dk];
             
-            count1++;
-            
             while (x < a[j]) {
                 
                 a[j+dk] = a[j];
-                
-                count1++;
                 
                 j-=dk;
                 
@@ -155,7 +150,7 @@ void ShellInsertSort(long a[],long n,long dk){
                     break;
                 }
             }
-            a[j+dk] = x;count1++;
+            a[j+dk] = x;
         }
         
     }
@@ -203,9 +198,6 @@ void Shell(long a[],long n){
 
 
 
-
-
-
 void ShellInsertSortTest(long a[],long n,long dk){
     
     for (long i =dk ; i<n; i++) {
@@ -215,8 +207,6 @@ void ShellInsertSortTest(long a[],long n,long dk){
             long x = a[i];
             
             long j = i-dk;
-            
-            a[i] = a[i-dk];
             
             count1++;
 
